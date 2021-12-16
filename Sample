@@ -1,0 +1,36 @@
+
+CORRECT_ANSWER = 0.32
+
+
+class Feedback:
+    SYNTAX_ERROR = 'Ошибка при вводе ответа'
+    CORRECT = 'Верно'
+    INCORRECT_WHEN1 = 'Это не совместные события'
+    INCORRECT_OTHER = 'Вероятность события, состоящего в том, что наушники выйдут из строя ровно через два года — строго в тот же день, час и т. д. — равна нулю.'
+
+##############################
+
+
+def solve():
+    return str(CORRECT_ANSWER)
+
+
+def parse(reply):
+    try:
+        answer = float(reply)
+    except ValueError:
+        answer = None
+    return answer
+
+
+def check(reply):
+    answer = parse(reply)
+    if answer is None:
+        return 0, Feedback.SYNTAX_ERROR
+
+    if answer == 0.32:
+        return 1, Feedback.CORRECT
+        return 1, Feedback.CORRECT
+    if answer == 1:
+        return 0, Feedback.INCORRECT_WHEN1
+    return 0, Feedback.INCORRECT_OTHER
